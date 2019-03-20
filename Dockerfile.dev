@@ -1,0 +1,17 @@
+### Use an existing docker image as a base
+FROM node
+
+### define working directory
+WORKDIR /app
+
+### if you make any changes to package.json
+COPY package.json ./
+
+### Download and install a dependency
+RUN npm install
+
+### make all the files inside this folder available to the container
+COPY ./ ./
+
+### Tell the image what do do when it starts as a container
+CMD ["npm", "start"]
